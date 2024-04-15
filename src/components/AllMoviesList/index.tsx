@@ -16,9 +16,6 @@ const AllMoviesList: FC = () => {
                     {
                         allMoviesStore.movies.length ? (
                             allMoviesStore.movies.map(movie =>
-                                // <div key={movie.id}>
-                                //     <p>{movie.name}</p>
-                                // </div>
                                 <Link key={movie.id} to={`/movie/${movie.id}`} state={{ movie, previousPathName: location.pathname + location.search }}>
                                     <Card className="py-4 max-w-[294px]">
                                         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -30,7 +27,7 @@ const AllMoviesList: FC = () => {
                                             <Image
                                                 alt="Card background"
                                                 className="object-contain rounded-xl"
-                                                src={movie.backdrop.url}
+                                                src={movie.poster.url ?? '/empty-image.svg'}
                                                 width={270}
                                             />
                                         </CardBody>
