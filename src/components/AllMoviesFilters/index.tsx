@@ -28,7 +28,7 @@ const AllMoviesFilters = () => {
 
             const res = await axios.get(`https://api.kinopoisk.dev/v1.4/movie${newQuery ? '/search' : ''}?page=${newPage.toString()}&limit=${newLimit ? newLimit.toString() : '10'}${queryString ? '&' + queryString : ''}`, {
                 headers: {
-                    'X-API-KEY': 'your api key'
+                    'X-API-KEY': process.env.REACT_APP_TOKEN
                 }
             })
             console.log(res);
