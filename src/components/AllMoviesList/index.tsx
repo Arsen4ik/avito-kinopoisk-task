@@ -10,9 +10,9 @@ const AllMoviesList: FC = () => {
 
     return (
         <section className="py-12">
-            <div className="container flex flex-col gap-12">
+            <div className="container flex flex-col gap-12 sm:px-6 md:px-0">
                 <p className="text-4xl text-black-primary">Фильмы по вашему запросу:</p>
-                <div className="flex flex-row flex-wrap gap-12 justify-center">
+                <div className="flex flex-row flex-wrap justify-center sm:gap-6 md:gap-12">
                     {
                         allMoviesStore.movies.length ? (
                             allMoviesStore.movies.map(movie =>
@@ -26,7 +26,7 @@ const AllMoviesList: FC = () => {
                                         <CardBody className="overflow-visible py-2">
                                             <Image
                                                 alt="Card background"
-                                                className="object-contain rounded-xl"
+                                                className="object-contain rounded-xl sm:object-cover sm:h-64 md:h-auto"
                                                 src={movie.poster.url ?? '/empty-image.svg'}
                                                 width={270}
                                             />

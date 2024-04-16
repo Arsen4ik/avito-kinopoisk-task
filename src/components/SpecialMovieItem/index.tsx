@@ -22,11 +22,11 @@ const SpecialMovieItem: FC = () => {
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
     return (
         <section className="relative py-12">
-            <div className="container flex flex-col gap-12">
+            <div className="container flex flex-col gap-12 sm:px-6 md:px-0">
                 {/* <p onClick={() => navigate(-1)}>back</p> */}
                 <div className="flex flex-row justify-between items-center gap-12">
-                    <img onClick={() => navigate(-1)} className="h-16 w-16 hover:cursor-pointer" src="/arrow-back.svg" alt="" />
-                    <p className="text-6xl font-bold text-black-primary text-end">{movie?.name}</p>
+                    <img onClick={() => navigate(-1)} className="sm:h-12 sm:w-12 md:h-16 md:w-16 hover:cursor-pointer" src="/arrow-back.svg" alt="" />
+                    <p className="sm:text-4xl md:text-6xl font-bold text-black-primary text-end">{movie?.name}</p>
                 </div>
                 <div className="flex flex-col gap-8 text-2xl">
                     <p className="text-2xl text-dark-gray-primary">{movie?.description}</p>

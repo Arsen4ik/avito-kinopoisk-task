@@ -96,17 +96,19 @@ const AllMoviesFilters = () => {
             navigate('/movie?' + queryString)
         }
     }
+    // console.log(process.env.REACT_APP_VAR);
+
 
     return (
         <section>
-            <div className="container">
-                <h1 className="text-6xl text-black-primary my-12">Поиск у <span className="text-blue-primary font-bold">Кинопоиска</span></h1>
+            <div className="container sm:px-6 md:px-0">
+                <h1 className="text-black-primary sm:text-4xl md:text-6xl my-12">Поиск у <span className="text-blue-primary font-bold">Кинопоиска</span></h1>
                 <div className="flex flex-col gap-12">
                     <div className="flex flex-row gap-12">
                         <div className="flex flex-col gap-5 w-full">
                             <p className="text-small text-default-500">Поиск по названию фильма</p>
                             <Input
-                                className="w-1/2"
+                                className="sm:w-full md:w-1/2"
                                 type="text"
                                 placeholder="введите название"
                                 labelPlacement="outside"
@@ -129,12 +131,12 @@ const AllMoviesFilters = () => {
                             />
                         </div>
                     </div>
-                    <div className="flex flex-row gap-12 items-center">
+                    <div className="flex flex-row gap-12 items-center sm:flex-wrap lg:flex-nowrap">
                         <Select
                             label="Фильмы каких лет ищите:"
                             placeholder="Выберите год/годы"
                             selectionMode="multiple"
-                            className="max-w-xs w-1/4"
+                            className="sm:w-full md:w-1/3 xl:w-1/4"
                             selectedKeys={allMoviesStore.year}
                             value={allMoviesStore.year}
                             onSelectionChange={(newYear) => changeURLQuery(allMoviesStore.limit, allMoviesStore.page, allMoviesStore.rating, Array.from(newYear as string), allMoviesStore.country, allMoviesStore.query)}
@@ -146,7 +148,7 @@ const AllMoviesFilters = () => {
                                 </SelectItem>
                             ))}
                         </Select>
-                        <Input className="w-1/4" label="В какой стране снят фильм:" value={allMoviesStore.country} onValueChange={(newCountry: string) => changeURLQuery(allMoviesStore.limit!, allMoviesStore.page, allMoviesStore.rating, allMoviesStore.year, newCountry, allMoviesStore.query)} />
+                        <Input className="md:w-1/3 xl:w-1/4" label="В какой стране снят фильм:" value={allMoviesStore.country} onValueChange={(newCountry: string) => changeURLQuery(allMoviesStore.limit!, allMoviesStore.page, allMoviesStore.rating, allMoviesStore.year, newCountry, allMoviesStore.query)} />
                         <Slider
                             label="возрастной рейтинг"
                             step={1}
@@ -158,7 +160,7 @@ const AllMoviesFilters = () => {
                             defaultValue={[12, 18]}
                             onChange={(newRatingRange) => changeURLQuery(allMoviesStore.limit, allMoviesStore.page, newRatingRange as [number, number], allMoviesStore.year, allMoviesStore.country, allMoviesStore.query)}
                             // formatOptions={{ style: "currency", currency: "USD" }}
-                            className="max-w-md w-2/4"
+                            className="sm:w-full md:w-2/4"
                         />
                     </div>
                     {/* <Input className="w-1/4" label="Какой рейтинг у фильма?" /> */}
@@ -189,8 +191,8 @@ const AllMoviesFilters = () => {
                             ))}
                         </Select> */}
                     {/* </div> */}
-                    <div className="flex flex-row gap-12">
-                        <div className="flex flex-col gap-5 w-1/4">
+                    <div className="flex gap-12 sm:flex-col-reverse md:flex-row">
+                        <div className="flex flex-col gap-5 md:w-1/2 lg:w-1/3 xl:w-1/4">
                             <p className="text-small text-default-500">Номер страницы: {allMoviesStore.page}</p>
                             <Pagination
                                 total={10}
@@ -217,7 +219,7 @@ const AllMoviesFilters = () => {
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex flex-col gap-5 w-1/4">
+                        <div className="flex flex-col gap-5 sm:w-full md:w-1/3 w-1/4">
                             <p className="text-small text-default-500">Кол-во фильмов на странице: {allMoviesStore.limit || 10}</p>
                             <Input
                                 type="text"
